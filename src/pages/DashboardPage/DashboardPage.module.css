@@ -1,0 +1,65 @@
+.cabecalho {
+  margin-bottom: 24px;
+}
+
+.cabecalho h1 {
+  margin: 0 0 4px;
+  font-size: 28px;
+}
+
+.cabecalho p {
+  margin: 0;
+  color: var(--cor-texto-suave);
+}
+
+.resumo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.metrica {
+  background: var(--cor-card);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+  padding: 20px;
+}
+
+.rotulo {
+  margin: 0;
+  font-size: 13px;
+  color: var(--cor-texto-suave);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.valor {
+  margin: 6px 0 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.destaque {
+  background: var(--cor-primaria);
+  color: #ffffff;
+}
+
+.destaque .rotulo {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.titulo {
+  font-size: 20px;
+  margin: 0 0 16px;
+}
+
+.grade {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.vazio {
+  color: var(--cor-texto-suave);
+}
