@@ -1,0 +1,38 @@
+.voltar {
+  margin-bottom: 16px;
+  padding: 8px 14px;
+  background: #ffffff;
+  color: var(--cor-texto);
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.voltar:hover {
+  background: #f9fafb;
+}
+
+.titulo {
+  margin: 0 0 24px;
+  font-size: 28px;
+}
+
+.secao {
+  font-size: 20px;
+  margin: 32px 0 16px;
+}
+
+.grafico {
+  margin-bottom: 32px;
+}
+
+.erro {
+  margin: 0 0 16px;
+  color: var(--cor-alerta);
+  font-size: 14px;
+}
+
+.carregando {
+  color: var(--cor-texto-suave);
+}

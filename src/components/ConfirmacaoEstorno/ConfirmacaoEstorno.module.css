@@ -1,0 +1,75 @@
+.fundo {
+  position: fixed;
+  inset: 0;
+  background: rgba(17, 24, 39, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 50;
+}
+
+.dialogo {
+  background: var(--cor-card);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+  padding: 24px;
+  max-width: 420px;
+  width: 100%;
+}
+
+.titulo {
+  margin: 0 0 12px;
+  font-size: 18px;
+}
+
+.texto {
+  margin: 0;
+  color: var(--cor-texto-suave);
+  font-size: 14px;
+}
+
+.acoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.botaoCancelar {
+  padding: 10px 16px;
+  background: #ffffff;
+  color: var(--cor-texto);
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.botaoConfirmar {
+  padding: 10px 16px;
+  background: var(--cor-alerta);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.botaoConfirmar:hover {
+  background: #b91c1c;
+}
+
+.botaoCancelar:disabled,
+.botaoConfirmar:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.erro {
+  margin: 12px 0 0;
+  color: var(--cor-alerta);
+  font-size: 14px;
+}
