@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styles from './FormLancamento.module.css';
 import { editarLancamento, registrarLancamento } from '../../api/lancamentos';
 import { ErroDeRequisicao } from '../../api/cliente';
@@ -17,23 +17,14 @@ export function FormLancamento({
   onSalvo,
   onCancelarEdicao,
 }: FormLancamentoProps) {
-  const [data, setData] = useState('');
-  const [valor, setValor] = useState('');
+  const [data, setData] = useState(lancamentoEmEdicao?.data ?? '');
+  const [valor, setValor] = useState(
+    lancamentoEmEdicao ? String(lancamentoEmEdicao.valor) : ''
+  );
   const [erro, setErro] = useState<string | null>(null);
   const [enviando, setEnviando] = useState(false);
 
   const editando = lancamentoEmEdicao !== null;
-
-  useEffect(() => {
-    if (lancamentoEmEdicao) {
-      setData(lancamentoEmEdicao.data);
-      setValor(String(lancamentoEmEdicao.valor));
-    } else {
-      setData('');
-      setValor('');
-    }
-    setErro(null);
-  }, [lancamentoEmEdicao]);
 
   async function enviar(e: React.FormEvent) {
     e.preventDefault();

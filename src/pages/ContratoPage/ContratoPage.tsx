@@ -20,29 +20,45 @@ export function ContratoPage({ contratoId, nome, onVoltar }: ContratoPageProps) 
   const [emEdicao, setEmEdicao] = useState<Lancamento | null>(null);
   const [paraEstornar, setParaEstornar] = useState<Lancamento | null>(null);
 
-  const carregarLancamentos = useCallback(() => {
-    setCarregando(true);
+  useEffect(() => {
+    let ativo = true;
+
+    listarLancamentos(contratoId)
+      .then((dados) => {
+        if (!ativo) return;
+        setLancamentos(dados);
+        setErro(null);
+      })
+      .catch((e: Error) => {
+        if (ativo) setErro(e.message);
+      })
+      .finally(() => {
+        if (ativo) setCarregando(false);
+      });
+
+    return () => {
+      ativo = false;
+    };
+  }, [contratoId]);
+
+  // Usada depois de salvar ou estornar: recarrega sem voltar ao estado de "carregando".
+  const recarregar = useCallback(() => {
     listarLancamentos(contratoId)
       .then((dados) => {
         setLancamentos(dados);
         setErro(null);
       })
-      .catch((e: Error) => setErro(e.message))
-      .finally(() => setCarregando(false));
+      .catch((e: Error) => setErro(e.message));
   }, [contratoId]);
-
-  useEffect(() => {
-    carregarLancamentos();
-  }, [carregarLancamentos]);
 
   function aoSalvar() {
     setEmEdicao(null);
-    carregarLancamentos();
+    recarregar();
   }
 
   function aoEstornar() {
     setParaEstornar(null);
-    carregarLancamentos();
+    recarregar();
   }
 
   return (
@@ -54,6 +70,7 @@ export function ContratoPage({ contratoId, nome, onVoltar }: ContratoPageProps) 
       <h1 className={styles.titulo}>{nome}</h1>
 
       <FormLancamento
+        key={emEdicao?.id ?? 'novo'}
         contratoId={contratoId}
         lancamentoEmEdicao={emEdicao}
         onSalvo={aoSalvar}
